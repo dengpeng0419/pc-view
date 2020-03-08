@@ -1,0 +1,540 @@
+@charset "utf-8";
+html {
+    color: #333;
+    background: #fff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    user-select: none;
+}
+
+html * {
+    outline: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+	width: 100%;
+	min-height: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 28px;
+}
+body {
+    -webkit-overflow-scrolling: touch;
+    font-family: system, -apple-system, "PingFangSC-Regular", HelveticaNeue, LucidaGrande;
+}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+input, select, textarea {
+    /* 去掉 input 聚焦时周围的带颜色边框 同时输入的时候防止闪屏 */
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 100%;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ddd;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ddd;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ddd;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ddd;
+}
+
+/* 去掉各 Table  cell 的边距并让其边重合 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 去除默认边框 */
+fieldset, img {
+    border: 0;
+}
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+/* 一致的 del 样式 */
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* 去掉列表前的标识, li 会继承 */
+ol, ul {
+    list-style: none;
+}
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption, th {
+    text-align: left;
+}
+
+/* 来自 yahoo, 让标题都自定义, 适应多个系统应用 */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+/* 统一上标和下标 */
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* 默认不显示下划线，保持页面简洁 */
+ins, a {
+    text-decoration: none;
+}
+
+/* 1px border */
+.border-1px:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.border-1px.border-top:before {
+  border-top: 1px solid #eee;/*no*/
+}
+.border-1px.border-right:before {
+  border-right: 1px solid #eee;/*no*/
+}
+.border-1px.border-bottom:before {
+  border-bottom: 1px solid #eee;/*no*/
+}
+.border-1px.border-left:before {
+  border-left: 1px solid #eee;/*no*/
+}
+.border-1px.border-all:before {
+  border: 1px solid #eee;/*no*/
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .border-1px:before {
+    right: -100%;
+    bottom: -100%;
+    transform: scale(.5);
+  }
+}
+
+html {
+  background: #f5f5f5;
+}
+[v-cloak] {
+  display:none !important;
+}
+
+.page-bottom {
+  padding-bottom: 100px;
+}
+
+.title-bar {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  z-index: 9;
+
+  .title {
+    font-size: 44px;
+    color: #fff;
+  }
+  .back-button {
+    position: absolute;
+    left: 60px;
+    z-index: 2;
+  }
+  .arrow {
+    width: 20px;
+    height: 34px;
+    background-image: url(../assets/img/icon_back.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .structure-choose {
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    left: 300px;
+    top: 28px;
+    z-index: 9;
+  }
+  .company-choose {
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    right: 300px;
+    top: 28px;
+    z-index: 9;
+  }
+  .time-choose {
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    right: 40px;
+    top: 28px;
+    z-index: 9;
+  }
+}
+
+.frame-body {
+  height: auto;
+  flex-grow: 1;
+}
+
+.years {
+  position: absolute;
+  top: 28px;;
+  right: 20px;
+  display: flex;
+  color: #77bde1;
+  font-size: 28px;
+  z-index: 9;
+  .year {
+    margin-left: 40px;
+  }
+  .choose-year {
+    color: #fff;
+  }
+}
+
+.rect-bg {
+  width: 320px;
+  height: 170px;
+  background-image: url(../assets/img/human_rectangle.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-right: 10px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  
+  .title {
+    color: #77bde1;
+    font-size: 26px;
+  }
+  .value {
+    color: #fff;
+    font-size: 52px;
+  }
+  .des {
+    color: #77bde1;
+    font-size: 22px;
+  }
+}
+.span-img {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 16px;
+  height: 15px;
+  animation: icon-bounce 2.5s infinite;
+  background-repeat: no-repeat;
+}
+.arrow-up {
+  background: url(../assets/img/manage_arrow.png);
+  background-size: 100% 100%;
+}
+.arrow-down {
+  background: url(../assets/img/manage_arrow_down.png);
+  background-size: 100% 100%;
+  // transform: rotate(180deg);
+}
+
+@keyframes icon-bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+  transition-timing-function: cubic-bezier(0.215,.61,.355,1); /*贝塞尔曲线 ： X1 Y1 X2 Y2*/
+  transform: translate3d(0,0,0); /*设置只在Z轴上移动*/
+  }
+  40%,
+  43%{
+  transition-timing-function: cubic-bezier(0.755,0.50,0.855,0.060);
+  transform: translate3d(0,-8px,0);
+  }
+  70%{
+  transition-timing-function: cubic-bezier(0.755,0.050,0.855,0.060);
+  transform: translate3d(0,-6px,0);
+  }
+  90%{
+  transform: translate3d(0,-1px,0);
+  }
+}
+
+@font-face {
+  /* font-test*/
+  font-family: tonjay;
+  src: url(../assets/fonts/digifaw.ttf);
+}
+
+.el-input--suffix {
+  &::before {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    content: '';
+    width: 0; 
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: #FFF transparent transparent transparent;
+    z-index: 2;
+  }
+}
+.el-input--suffix.is-focus {
+  &::before {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    content: '';
+    width: 0; 
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: #FFF transparent transparent transparent;
+    transform: rotate(180deg);
+    z-index: 2;
+  }
+}
+.el-input__suffix-inner {
+  opacity: 0;
+}
+.el-select>.el-input {
+  height: 50px;
+}
+.el-select>.el-input>input {
+  height: 50px;
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../assets/img/human_resource.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #192031;
+  display: flex;
+}
+.logo {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 287px;
+  height: 70px;
+  background-image: url(../assets/img/logo.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#nav {
+  padding-left: 22px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 344px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  // border-right: 3px solid #a1b6d5;
+  //padding-left: 52px;
+  // align-items: center;
+  .left-nav {
+    width: 260px;
+    height: 55px;
+    font-size: 46px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+    line-height: 55px;
+    position: relative;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    &:first-child {
+      margin-top: 227px;
+    }
+    &.router-link-exact-active {
+      // background-image: url(../assets/img/route_btn_on.png);
+      // background-size: 100% 100%;
+      color: #2788c3;
+      &.icon_shouye {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/shouye_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_zonghe {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/zonghe_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_jingying {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/jingying_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_hexin {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/hexin_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_anquan {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/anquan_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_fuwu {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/fuwu_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_diaodu {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/dianli_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_tongye {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/tongye_on.png);
+        background-size: 100% 100%;
+      }
+      &.icon_kaohe {
+        width: 300px;
+        height: 64px;
+        transition: width .2s ease-in-out;
+        background-image: url(../assets/img/kaohe_on.png);
+        background-size: 100% 100%;
+      }
+    }
+    .icon {
+      display: inline-block;
+      margin-right: 40px;
+      margin-left: -80px;
+      width: 36px;
+      height: 44px;
+      background-repeat: no-repeat;
+    }
+    // .icon_shouye {
+    //   background-image: url(../assets/img/shouye.png);
+    //   background-size: 100% 100%;
+    // }
+   }
+  .icon_shouye {
+    background-image: url(../assets/img/shouye.png);
+    background-size: 100% 100%;
+  }
+  .icon_zonghe {
+    background-image: url(../assets/img/zonghe.png);
+    background-size: 100% 100%;
+  }
+  .icon_jingying {
+    background-image: url(../assets/img/jingying.png);
+    background-size: 100% 100%;
+  }
+  .icon_hexin {
+    background-image: url(../assets/img/hexin.png);
+    background-size: 100% 100%;
+  }
+  .icon_anquan {
+    background-image: url(../assets/img/anquan.png);
+    background-size: 100% 100%;
+  }
+  .icon_fuwu {
+    background-image: url(../assets/img/fuwu.png);
+    background-size: 100% 100%;
+  }
+  .icon_tongye {
+    background-image: url(../assets/img/tongye.png);
+    background-size: 100% 100%;
+  }
+  .icon_diaodu {
+    background-image: url(../assets/img/dianli.png);
+    background-size: 100% 100%;
+  }
+  .icon_kaohe {
+    background-image: url(../assets/img/kaohe.png);
+    background-size: 100% 100%;
+  }
+  .untouch {
+    color: #666;
+    opacity: 0.4;
+  }
+}

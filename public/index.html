@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+      (function(win) {
+  
+        var doc = win.document;
+        var docEl = doc.documentElement;
+        var tid;
+  
+        // 计算rem基准值
+        function refreshRem() {
+          var width = docEl.getBoundingClientRect().width;
+          //win.document.body.style.width = 1250
+          console.log(document.getElementsByTagName("body"))
+          width > 1920 && (width = 1920);
+          var rem = width / 10 + 'px';
+          // width > 1920 && (width = 1920);
+          // var rem = width / 10*3 + 'px';
+          docEl.style.fontSize = rem;
+        }
+  
+        // 浏览器窗口大小发生变化后重新计算rem基准值
+        win.addEventListener('resize', function() {
+          // clearTimeout(tid);
+          // tid = setTimeout(refreshRem, 300);
+          location.reload() 
+        }, false);
+  
+        // 当从外部返回前一个页面时重新计算rem基准值
+        // win.addEventListener('pageshow', function(e) {
+        //   if (e.persisted) {
+        //     clearTimeout(tid);
+        //     tid = setTimeout(refreshRem, 300);
+        //     // 样式不更新，刷新页面
+        //     if (sessionStorage.getItem('JUMPOUT')) {
+        //       sessionStorage.removeItem('JUMPOUT');
+        //       window.location.reload(true);
+        //     }
+        //   }
+        // }, false);
+  
+        refreshRem();
+  
+      })(window);
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>疫情防控期间公司电量及企业复工生产情况</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
