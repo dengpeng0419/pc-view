@@ -54,7 +54,7 @@
           <div class="content-title">用电量</div>
           <div class="banner-detail">
             <div class="banner-rect">
-              <div class="unit">（万千瓦）</div>
+              <div class="unit">（万千瓦时）</div>
               <div class="left-title">当日用电量</div>
               <div class="bottom-value">{{bannerData.powerSaleDayValue}} <span style="font-weight:bold;" v-if="!bannerData.powerSaleDayValue">--</span>
                 <span v-if="bannerData.powerSaleComparedToPre>0" style="color:#E0E957">{{bannerData.powerSaleComparedToPre}}% <span>&uarr;</span></span>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="banner-rect">
-              <div class="unit">（万千瓦）</div>
+              <div class="unit">（万千瓦时）</div>
               <div class="left-title">累计用电量</div>
               <div class="bottom-value">{{bannerData.totalUsedPower}} <span style="font-weight:bold;" v-if="!bannerData.totalUsedPower">--</span>
                 <span v-if="bannerData.totalUsedPowerComparedToPre >0" style="color:#E0E957">{{bannerData.totalUsedPowerComparedToPre }}% <span>&uarr;</span></span>
@@ -119,6 +119,7 @@
             <div class="content-title">大工业用户</div>
             <div class="banner-detail">
               <div class="banner-rect medium">
+                <div class="unit unit-top">（万千瓦时）</div>
                 <div class="left-min-title">当日电量</div>
                 <div class="value">{{bannerData.bigIndustryPowerSaleDayValue}} <span style="font-weight:bold;" v-if="!bannerData.bigIndustryPowerSaleDayValue">--</span>
                   <span v-if="bannerData.bigIndustryPowerSaleComparedToPre>0" style="color:#E0E957">{{bannerData.bigIndustryPowerSaleComparedToPre}}% <span>&uarr;</span></span>
@@ -138,6 +139,7 @@
             <div class="content-title">10kV及以上一般工商业</div>
             <div class="banner-detail">
               <div class="banner-rect medium">
+                <div class="unit unit-top">（万千瓦时）</div>
                 <div class="left-min-title">当日电量</div>
                 <div class="value">{{bannerData.industryPowerSaleDayValue}} <span style="font-weight:bold;" v-if="!bannerData.industryPowerSaleDayValue">--</span>
                   <span v-if="bannerData.industryPowerSaleComparedToPre>0" style="color:#E0E957">{{bannerData.industryPowerSaleComparedToPre}}% <span>&uarr;</span></span>
@@ -953,6 +955,9 @@ export default {
           font-family:Microsoft YaHei;
           font-weight:400;
           color:rgba(218,234,254,1);
+        }
+        .unit-top {
+          top: 2px !important;
         }
         .left-title {
           position: absolute;
